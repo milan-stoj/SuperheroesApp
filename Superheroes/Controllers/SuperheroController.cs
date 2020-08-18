@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Superheroes.Models;
 
 namespace Superheroes.Controllers
 {
@@ -24,13 +25,14 @@ namespace Superheroes.Controllers
         // GET: SuperheroController/Create
         public ActionResult Create()
         {
-            return View();
+            Superhero superhero = new Superhero();
+            return View(superhero);
         }
 
         // POST: SuperheroController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Superhero superhero)
         {
             try
             {
