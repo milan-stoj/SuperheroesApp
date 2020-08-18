@@ -4,12 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Superheroes.Data;
 using Superheroes.Models;
 
 namespace Superheroes.Controllers
 {
     public class SuperheroController : Controller
     {
+        public ApplicationDbContext db;
+
+        public SuperheroController(DbContextOptions<ApplicationDbContext> options)
+        {
+            db = new ApplicationDbContext(options);
+        }
+
         // GET: SuperheroController
         public ActionResult Index()
         {
@@ -36,6 +45,8 @@ namespace Superheroes.Controllers
         {
             try
             {
+                db.Superhero.Add(superhero);
+                db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
