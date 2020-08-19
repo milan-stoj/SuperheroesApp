@@ -4,11 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Superheroes </h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="d-flex p-2">
+    <img src="~/images/shbanner.jpeg" class="img-fluid" alt="Responsive image">
+</div>
+
+
+<div class="d-flex p-2">
+    <button class="btn btn-outline-success">
+        <a asp-action="Create">Create New</a>
+    </button>
+</div>
+   
 <table class="table">
     <thead>
         <tr>
