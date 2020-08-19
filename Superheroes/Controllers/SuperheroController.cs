@@ -28,7 +28,7 @@ namespace Superheroes.Controllers
         // GET: SuperheroController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(db.Superhero.Single(s => s.Id == id));
         }
 
         // GET: SuperheroController/Create
@@ -79,6 +79,7 @@ namespace Superheroes.Controllers
         // GET: SuperheroController/Delete/5
         public ActionResult Delete(int id)
         {
+
             return View();
         }
 
