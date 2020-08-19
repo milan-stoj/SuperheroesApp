@@ -58,7 +58,7 @@ namespace Superheroes.Controllers
         // GET: SuperheroController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(db.Superhero.Single(s => s.Id == id));
         }
 
         // POST: SuperheroController/Edit/5
@@ -68,6 +68,14 @@ namespace Superheroes.Controllers
         {
             try
             {
+                Superhero superhero = db.Superhero.Single(s => s.Id == id);
+                superhero.Name = collection["Name"];
+                superhero.AlterEgo = collection["AlterEgo"];
+                superhero.PrimaryAbility = collection["PrimaryAbility"];
+                superhero.SecondaryAbility = collection["SecondaryAbility"];
+                superhero.Catchphrase = collection["Catchphrase"];
+                
+                db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -79,8 +87,7 @@ namespace Superheroes.Controllers
         // GET: SuperheroController/Delete/5
         public ActionResult Delete(int id)
         {
-
-            return View();
+            return View(db.Superhero.Single(s => s.Id == id));
         }
 
         // POST: SuperheroController/Delete/5
@@ -90,6 +97,8 @@ namespace Superheroes.Controllers
         {
             try
             {
+                db.Superhero.Remove(db.Superhero.Single(s => s.Id == id));
+                db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
