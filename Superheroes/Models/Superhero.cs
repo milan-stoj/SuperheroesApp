@@ -11,6 +11,7 @@ namespace Superheroes.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Superhero")]
         public string Name { get; set; }
 
         [Display(Name = "Alter Ego")]
